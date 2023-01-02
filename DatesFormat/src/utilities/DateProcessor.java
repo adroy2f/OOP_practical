@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class DateProcessor {
 
-	public static ArrayList<Date> readDates(String fileName)
+	public static ArrayList<Date> readDateObjs(String fileName)
 	{
 		Date d;
 		SimpleDateFormat parser= new SimpleDateFormat("dd/MM/yyyy");
@@ -22,6 +22,25 @@ public class DateProcessor {
 			while(fileScanner.hasNextLine())
 			{
 				d=parser.parse(fileScanner.nextLine());
+				dates.add(d);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Error ocured -- "+ e.getMessage());
+		}
+		return dates;
+	}
+	
+	public static ArrayList<String> readStringDates(String fileName)
+	{
+		String d;
+		ArrayList<String> dates=new ArrayList<String>();
+		try {
+			File fp=new File(fileName);
+			Scanner fileScanner=new Scanner(fp);
+			while(fileScanner.hasNextLine())
+			{
+				d=fileScanner.nextLine();
 				dates.add(d);
 			}
 		}
