@@ -1,0 +1,2 @@
+module armstrong_Number {
+}
